@@ -74,12 +74,7 @@ $ python -m downstream.resnet.test -h
 ```
 
 `-c`
-- Specifies MedMNIST2D dataset to be used: https://medmnist.com/
-- Accepted arguments below
-```py
-pathmnist, chestmnist, dermamnist, octmnist, pneumoniamnist, retinamnist, 
-breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
-```
+- Specifies dataset to be used
 
 `fin`
 - Input downstream/baseline model filename
