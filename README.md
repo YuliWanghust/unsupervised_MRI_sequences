@@ -117,26 +117,3 @@ version in terms of validation accuracy, read instructions in
 ```bash
 $ pip freeze > requirements.txt
 ```
-
-## Credits
-
-The code for pretraining and downstream learning is heavily adapted from a
-tutorial within the PyTorch Lightning documentation authored by Phillip Lippe
-under the CC BY-SA license ([tutorial][tut]).
-
-[tut]: https://lightning.ai/docs/pytorch/stable/notebooks/course_UvA-DL/13-contrastive-learning.html
-
-We source medical images from [MedMNIST](https://medmnist.com/).
-
-```bibtex
-@article{medmnistv2,
-    title={MedMNIST v2-A large-scale lightweight benchmark for 2D and 3D biomedical image classification},
-    author={Yang, Jiancheng and Shi, Rui and Wei, Donglai and Liu, Zequan and Zhao, Lin and Ke, Bilian and Pfister, Hanspeter and Ni, Bingbing},
-    journal={Scientific Data},
-    volume={10},
-    number={1},
-    pages={41},
-    year={2023},
-    publisher={Nature Publishing Group UK London}
-}
-```
