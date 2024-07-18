@@ -13,12 +13,7 @@ $ python -m pretrain.simclr.train -h
 If training successful, the model can be found in `models/`.
 
 `-c`
-- Specifies MedMNIST2D dataset to be used: https://medmnist.com/
-- Accepted arguments below
-```py
-pathmnist, chestmnist, dermamnist, octmnist, pneumoniamnist, retinamnist, 
-breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
-```
+- Specifies dataset to be used
 
 `epochs`
 - Maximum number of epochs
@@ -70,12 +65,7 @@ $ python -m pretrain.simclr.feature_analysis -h
 ```
 
 `-c`
-- Specifies MedMNIST2D dataset to be used: https://medmnist.com/
-- Accepted arguments below
-```py
-pathmnist, chestmnist, dermamnist, octmnist, pneumoniamnist, retinamnist, 
-breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
-```
+- Specifies dataset to be used
 
 `fin`
 - Input pretrained model filename. Data is passed through base encoder to output
