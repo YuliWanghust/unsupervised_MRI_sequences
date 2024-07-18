@@ -1,4 +1,4 @@
-# Evaluating SimCLR and SimSIam for MRI Sequence Classification
+# Evaluating SimCLR and SimSiam for MRI Sequence Classification
 
 In this repository, we provide a comprehensive set of frameworks written in
 PyTorch Lightning to perform and evaluate self-supervised contrastive learning
