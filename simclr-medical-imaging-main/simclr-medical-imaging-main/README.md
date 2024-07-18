@@ -1,37 +1,8 @@
-# Evaluating SimCLR for Medical Image Classification
-
-This repository contains the codebase for the experiments conducted and
-published in the paper "Evaluating SimCLR for Medical Image Classification" as
-part of my final year individual research project at Imperial College
-London (BEng JMC 2023).
+# Evaluating SimCLR and SimSIam for MRI Sequence Classification
 
 In this repository, we provide a comprehensive set of frameworks written in
 PyTorch Lightning to perform and evaluate self-supervised contrastive learning
-using SimCLR on medical imaging data pipelined from the MedMNIST database.
-
-Abstract:
-> Computer-aided diagnosis (CADx) plays a crucial role in assisting radiologists
-  with interpreting medical images. Over recent years, there has been
-  significant advancements in image classification models, such as deep neural
-  networks and Vision Transformers. Training such models require lots of
-  labelled data, a prerequisite often not met in medical environments as
-  labelling images is time-consuming and requires expertise.<br><br>
-  An alternative training paradigm is self-supervised learning, which involves
-  pretraining a model with unlabelled data followed by finetuning it with
-  labelled data. This paradigm has achieved strong performance on classifying
-  natural images, even with limited labelled data.<br><br>
-  This thesis aims to explore the potential of SimCLR, a state-of-the-art
-  self-supervised learning framework, for medical image classification. We
-  evaluate this framework on a wide range of medical imaging modalities,
-  including colon pathology, dermatology, blood cells, retina fundus and other
-  medical scans. We find significant improvement over baseline supervised
-  metrics (an increase of up to 30.6% in accuracy). We simulate different data
-  settings and explore tackling class imbalance, as well as transfer learning on
-  different datasets. We find downsampling images to be a viable solution for
-  some modalities in bringing down training times (12 hours to pretrain a model
-  for classifying blood cells that achieves over 0.95 AUC after finetuning). We
-  propose a novel augmentation sequence which shows consistent improvement over
-  the original framework.
+using SimCLR on MRI sequence classification.
 
 ## Background
 
@@ -87,7 +58,7 @@ Original SimCLR papers:
 
 1. Clone this repository.
 ```bash
-git clone https://github.com/j-freddy/simclr-medical-imaging
+git clone
 ```
 
 2. Create virtual environment with Python 3.10.9. Some scripts may fail on
@@ -138,11 +109,6 @@ specified number of epochs. To replace the model with the best-performing
 version in terms of validation accuracy, read instructions in
 `scripts/replace-with-best-checkpoint.sh`.
 
-### Existing models
-
-A collection of pretrained and finetuned models can be accessed on [Zenodo][zenodo].
-
-[zenodo]: https://zenodo.org/record/8048780
 
 ## Contribute
 
