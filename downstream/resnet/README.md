@@ -22,12 +22,7 @@ $ python -m downstream.resnet.train -h
 If training successful, the model can be found in `models/`.
 
 `-c`
-- Specifies MedMNIST2D dataset to be used: https://medmnist.com/
-- Accepted arguments below
-```py
-pathmnist, chestmnist, dermamnist, octmnist, pneumoniamnist, retinamnist, 
-breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
-```
+- Specifies dataset to be used
 
 `epochs`
 - Maximum number of epochs
