@@ -1,4 +1,4 @@
-# ResNet
+# ResNet for simsiam pre-trained model
 
 Make sure you are currently in the `root` folder.
 
@@ -14,9 +14,9 @@ finetuned during transfer learning.
 Train a model starting from a pretrained ResNet-18 architecture.
 
 ```bash
-$ python -m downstream.resnet.train -c C -epochs EPOCHS [-samples SAMPLES] [-spc SPC] [-fin FIN] [-fout FOUT]
+$ python -m downstream.resnet_simsiam.train -c C -epochs EPOCHS [-samples SAMPLES] [-spc SPC] [-fin FIN] [-fout FOUT]
 # Run for help/description
-$ python -m downstream.resnet.train -h
+$ python -m downstream.resnet_simsiam.train -h
 ```
 
 If training successful, the model can be found in `models/`.
@@ -58,11 +58,11 @@ the purpose of creating baseline metrics.
 
 ```bash
 # Quick demo: takes 5 minutes to train
-$ python -m downstream.resnet.train -c breastmnist -epochs 12 -samples 20 -fin simclr-demo -fout simclr-demo
+$ python -m downstream.resnet_simsiam.train -c dermamnist -epochs 12 -samples 20 -fin simclr-demo -fout simclr-demo
 # Takes 1 hour to train on GPU
-$ python -m downstream.resnet.train -c dermamnist -epochs 1000 -samples 100 -fin pretrain-dermamnist
+$ python -m downstream.resnet_simsiam.train -c dermamnist -epochs 1000 -samples 100 -fin pretrain-dermamnist
 # Baseline: Supervised learning
-$ python -m downstream.resnet.train -c dermamnist -epochs 1000 -samples 100
+$ python -m downstream.resnet_simsiam.train -c dermamnist -epochs 1000 -samples 100
 ```
 
 If training successful for the demo, the model can be found as
@@ -73,9 +73,9 @@ If training successful for the demo, the model can be found as
 Calculate and print test metrics on an existing model.
 
 ```bash
-$ python -m downstream.resnet.test -c C -fin FIN
+$ python -m downstream.resnet_simsiam.test -c C -fin FIN
 # Run for help/description
-$ python -m downstream.resnet.test -h
+$ python -m downstream.resnet_simsiam.test -h
 ```
 
 `-c`
@@ -92,9 +92,9 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 ### Example
 
 ```bash
-$ python -m downstream.resnet.test -c breastmnist -fin simclr-demo
+$ python -m downstream.resnet_simsiam.test -c dermamnist -fin simclr-demo
 # A larger dataset can take 5-10 minutes
-$ python -m downstream.resnet.test -c dermamnist -fin downstream-dermamnist-100-samples
+$ python -m downstream.resnet_simsiam.test -c dermamnist -fin downstream-dermamnist-100-samples
 ```
 
 ## Feature analysis
@@ -106,9 +106,9 @@ respository under `out/`.
 You must have an existing downstream/baseline model.
 
 ```bash
-$ python -m downstream.resnet.feature_analysis -c C -fin FIN -tsne
+$ python -m downstream.resnet_simsiam.feature_analysis -c C -fin FIN -tsne
 # Run for help/description
-$ python -m downstream.resnet.feature_analysis -h
+$ python -m downstream.resnet_simsiam.feature_analysis -h
 ```
 
 `-c`
@@ -127,8 +127,8 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 ### Example
 
 ```bash
-$ python -m downstream.resnet.feature_analysis -c breastmnist -fin simclr-demo
-$ python -m downstream.resnet.feature_analysis -c pathmnist -fin baseline-pathmnist-18 -tsne
+$ python -m downstream.resnet_simsiam.feature_analysis -c dermamnist -fin simclr-demo
+$ python -m downstream.resnet_simsiam.feature_analysis -c pathmnist -fin baseline-pathmnist-18 -tsne
 ```
 
 ## TensorBoard
