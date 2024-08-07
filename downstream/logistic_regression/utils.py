@@ -1,2 +1,0 @@
-def summarise():
-    print("Done! :)")
