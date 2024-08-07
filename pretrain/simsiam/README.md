@@ -7,7 +7,7 @@ Make sure you are currently in the `root` folder.
 ```bash
 $ python -m pretrain.simsiam.train -c C -epochs EPOCHS -aug AUG [-samples SAMPLES] [-fin FIN] [-fout FOUT]
 # Run for help/description
-$ python -m pretrain.simclr.train -h
+$ python -m pretrain.simsiam.train -h
 ```
 
 If training successful, the model can be found in `models/`.
