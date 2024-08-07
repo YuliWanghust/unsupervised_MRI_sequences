@@ -60,12 +60,3 @@ Note that the saved model is always the latest model after training with the
 specified number of epochs. To replace the model with the best-performing
 version in terms of validation accuracy, read instructions in
 `scripts/replace-with-best-checkpoint.sh`.
-
-
-## Contribute
-
-### Update requirements
-
-```bash
-$ pip freeze > requirements.txt
-```
