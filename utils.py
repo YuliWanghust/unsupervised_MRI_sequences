@@ -1,5 +1,6 @@
 from enum import Enum
 import os
+import random
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
@@ -29,6 +30,17 @@ RESNET_TRANSFER_CHECKPOINT_PATH = f"downstream/resnet/{MODEL_DIR}"
 DIMENSIONALITY_REDUCTION_SAMPLES = 2000
 
 # Colours for plots
+# COLORS = [
+#     "#212529",  # Black
+#     "#c92a2a",  # Red
+#     "#5f3dc4",  # Violet
+#     "#1864ab",  # Blue
+#     "#2b8a3e",  # Green
+#     "#862e9c",  # Grape
+#     "#4263eb",  # Indigo
+#     "#1098ad",  # Cyan
+#     "#f08c00",  # Yellow
+# ]
 COLORS = [
     "#212529",  # Black
     "#c92a2a",  # Red
@@ -39,6 +51,9 @@ COLORS = [
     "#4263eb",  # Indigo
     "#1098ad",  # Cyan
     "#f08c00",  # Yellow
+    "#f76707",  # Orange
+    "#c2255c",  # Pink
+    "#0ca678",  # Teal
 ]
 
 # ==============================================================================
@@ -156,7 +171,7 @@ def show_example_images(data, num_examples=12, reshape=False):
 def show_original_and_augmented_example_images(
     data,
     augmented_data,
-    num_examples=6,
+    num_examples=8,
     views=2,
 ):
     """
@@ -170,13 +185,15 @@ def show_original_and_augmented_example_images(
         views (int, optional): The number of augmented images to display per
             example. Defaults to 2.
     """
+    random_indices = random.sample(range(len(data)), num_examples)
+
     imgs = torch.stack(
-        [img for idx in range(num_examples) for img in data[idx][0]],
+        [img for idx in random_indices for img in data[idx][0]],
         dim=0
     )
 
     augmented_imgs = torch.stack(
-        [img for idx in range(num_examples) for img in augmented_data[idx][0]],
+        [img for idx in random_indices for img in augmented_data[idx][0]],
         dim=0
     )
 
@@ -213,6 +230,69 @@ def show_original_and_augmented_example_images(
     plt.subplots_adjust(wspace=0, hspace=0)
     plt.show()
 
+def normalize_image(image):
+    """
+    Normalize the image to the range [0, 1] based on its min and max values.
+
+    Args:
+        image (torch.Tensor): The image tensor to be normalized.
+
+    Returns:
+        torch.Tensor: The normalized image tensor.
+    """
+    min_val = image.min()
+    max_val = image.max()
+    return (image - min_val) / (max_val - min_val)
+
+def show_normalized_original_and_augmented_example_images(
+    data,
+    augmented_data,
+    num_examples=8,
+    views=2,
+):
+    """
+    Display the intensity distribution histograms of original and augmented example images.
+
+    Args:
+        data (torch.Tensor): Images data.
+        augmented_data (torch.Tensor): Augmented images data.
+        num_examples (int, optional): The number of examples to display.
+            Defaults to 6.
+        views (int, optional): The number of augmented images to display per
+            example. Defaults to 2.
+    """
+    random_indices = random.sample(range(len(data)), num_examples)
+
+    num_cols = views + 1  # Number of columns: original histogram and augmented histograms
+    _, axs = plt.subplots(num_examples, num_cols, figsize=(5, 1 * num_examples))
+
+    for i, idx in enumerate(random_indices):
+        
+        # Normalize the original image to the range [0, 1]
+        original_image = normalize_image(data[idx][0].float())
+
+        # Plot intensity distribution of original image
+        axs[i, 0].hist(original_image.squeeze().numpy().flatten(), bins=64, range=(0, 1), density=True, color='gray', alpha=0.75)
+        axs[i, 0].set_xlim(-0.1, 1)
+        axs[i, 0].set_ylim(0, 10)
+        axs[i, 0].tick_params(axis='both', labelsize=6)
+        #axs[i, 0].set_title("Original")
+
+        # Plot augmented images intensity distributions
+        for j in range(views):
+            
+            # Normalize the augmented image to the range [0, 1]
+            augmented_image = normalize_image(augmented_data[idx][0][j].float())
+
+            axs[i, j + 1].hist(augmented_image.squeeze().numpy().flatten(), bins=64, range=(0, 1), density=True, color='gray', alpha=0.75)
+            axs[i, j + 1].set_xlim(-0.1, 1)
+            axs[i, j + 1].set_ylim(0, 10)
+            axs[i, j + 1].tick_params(axis='both', labelsize=6)
+            #axs[i, j + 1].set_title(f"Augmented {j + 1}")
+
+    plt.tight_layout(pad=4.0)
+    plt.subplots_adjust(hspace=0.4, wspace=0.4)  # Adjust the space between the rows and columns
+    plt.show()
 
 def convert_to_rgb(img):
     """
@@ -385,3 +465,48 @@ def get_auroc_metric(model, test_loader, num_classes):
 
     auroc_metric = AUROC(task="multiclass", num_classes=num_classes)
     return auroc_metric(y_pred, y_true).item()
+
+
+from sklearn.metrics import accuracy_score
+def get_accuracy_per_class(model, test_loader, num_classes):
+    """
+    Compute the accuracy for each class in a multiclass classification task.
+
+    Args:
+        model (torch.nn.Module): The model to evaluate.
+        test_loader (torch.utils.data.DataLoader): The data loader for the test
+            dataset used to compute the metric.
+        num_classes (int): The number of classes in the classification task.
+
+    Returns:
+        dict: A dictionary with class indices as keys and accuracy as values.
+    """
+    y_true = []
+    y_pred = []
+
+    model.eval()  # Set the model to evaluation mode
+    with torch.no_grad():  # Disable gradient calculation for efficiency
+        for batch in test_loader:
+            x, y = batch
+            outputs = model(x)
+            _, preds = torch.max(outputs, 1)  # Get the index of the max log-probability
+            y_true.extend(y.cpu().tolist())
+            y_pred.extend(preds.cpu().tolist())
+    # Flatten y_true in case it contains lists
+    y_true = [label[0] if isinstance(label, list) else label for label in y_true]
+    # # Print the enumerated y_true
+    # print("Enumerated y_true:")
+    # for idx, label in enumerate(y_true):
+    #     print(f"Index: {idx}, Label: {label}")
+
+    accuracy_per_class = {}
+    for class_idx in range(num_classes):
+        class_mask = [i for i, label in enumerate(y_true) if label == class_idx]
+        if len(class_mask) > 0:  # Avoid division by zero
+            class_true = [y_true[i] for i in class_mask]
+            class_pred = [y_pred[i] for i in class_mask]
+            accuracy_per_class[class_idx] = accuracy_score(class_true, class_pred)
+        else:
+            accuracy_per_class[class_idx] = None  # No samples for this class
+
+    return accuracy_per_class
