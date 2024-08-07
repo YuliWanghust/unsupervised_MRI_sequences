@@ -5,7 +5,7 @@ Make sure you are currently in the `root` folder.
 ## Train
 
 ```bash
-$ python -m pretrain.simclr.train -c C -epochs EPOCHS -aug AUG [-samples SAMPLES] [-fin FIN] [-fout FOUT]
+$ python -m pretrain.simclr.train -c C -epochs EPOCHS -aug AUG [-samples SAMPLES] [-fin FIN] [-fout FOUT] -bsize [64,128 or ...]
 # Run for help/description
 $ python -m pretrain.simclr.train -h
 ```
@@ -45,7 +45,7 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 
 ```bash
 # Quick demo: takes 5 minutes to train
-$ python -m pretrain.simclr.train -c dermamnist -epochs 3 -aug natural -samples 20 -fout simclr-demo
+$ python -m pretrain.simclr.train -c dermamnist -epochs 3 -aug natural -samples 20 -fout simclr-demo -bsize 64
 # Takes 1 day to train on GPU
 $ python -m pretrain.simclr.train -c dermamnist -epochs 2000 -aug natural
 # Perform further pretraining on a pretrained model
