@@ -5,9 +5,9 @@ Make sure you are currently in the `root` folder.
 ## Train
 
 ```bash
-$ python -m pretrain.simclr.train -c C -epochs EPOCHS -aug AUG [-samples SAMPLES] [-fin FIN] [-fout FOUT]
+$ python -m pretrain.simsiam.train -c C -epochs EPOCHS -aug AUG [-samples SAMPLES] [-fin FIN] [-fout FOUT]
 # Run for help/description
-$ python -m pretrain.simclr.train -h
+$ python -m pretrain.simsiam.train -h
 ```
 
 If training successful, the model can be found in `models/`.
@@ -45,11 +45,11 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 
 ```bash
 # Quick demo: takes 5 minutes to train
-$ python -m pretrain.simclr.train -c breastmnist -epochs 3 -aug natural -samples 20 -fout simclr-demo
+$ python -m pretrain.simsiam.train -c breastmnist -epochs 3 -aug natural -samples 20 -fout simclr-demo
 # Takes 1 day to train on GPU
-$ python -m pretrain.simclr.train -c dermamnist -epochs 2000 -aug natural
+$ python -m pretrain.simsiam.train -c dermamnist -epochs 2000 -aug natural
 # Perform further pretraining on a pretrained model
-$ python -m pretrain.simclr.train -c breastmnist -epochs 2000 -aug natural -fin pretrain-dermamnist
+$ python -m pretrain.simsiam.train -c breastmnist -epochs 2000 -aug natural -fin pretrain-dermamnist
 ```
 
 If training successful for the demo, the model can be found as
@@ -64,9 +64,9 @@ respository under `out/`.
 You must have an existing pretrained model.
 
 ```bash
-$ python -m pretrain.simclr.feature_analysis -c C -fin FIN -tsne
+$ python -m pretrain.simsiam.feature_analysis -c C -fin FIN -tsne
 # Run for help/description
-$ python -m pretrain.simclr.feature_analysis -h
+$ python -m pretrain.simsiam.feature_analysis -h
 ```
 
 `-c`
@@ -90,8 +90,8 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 ### Example
 
 ```bash
-$ python -m pretrain.simclr.feature_analysis -c breastmnist -fin simclr-demo
-$ python -m pretrain.simclr.feature_analysis -c dermamnist -fin pretrain-dermamnist -tsne
+$ python -m pretrain.simsiam.feature_analysis -c breastmnist -fin simclr-demo
+$ python -m pretrain.simsiam.feature_analysis -c dermamnist -fin pretrain-dermamnist -tsne
 ```
 
 ## Data preview
@@ -102,7 +102,7 @@ augmentations.
 ### Example
 
 ```bash
-$ python -m pretrain.simclr.data_preview -c pathmnist -aug novel
+$ python -m pretrain.simsiam.data_preview -c pathmnist -aug novel
 ```
 
 ## TensorBoard
