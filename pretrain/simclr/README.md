@@ -45,11 +45,11 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 
 ```bash
 # Quick demo: takes 5 minutes to train
-$ python -m pretrain.simclr.train -c breastmnist -epochs 3 -aug natural -samples 20 -fout simclr-demo
+$ python -m pretrain.simclr.train -c dermamnist -epochs 3 -aug natural -samples 20 -fout simclr-demo
 # Takes 1 day to train on GPU
 $ python -m pretrain.simclr.train -c dermamnist -epochs 2000 -aug natural
 # Perform further pretraining on a pretrained model
-$ python -m pretrain.simclr.train -c breastmnist -epochs 2000 -aug natural -fin pretrain-dermamnist
+$ python -m pretrain.simclr.train -c dermamnist -epochs 2000 -aug natural -fin pretrain-dermamnist
 ```
 
 If training successful for the demo, the model can be found as
@@ -90,7 +90,7 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 ### Example
 
 ```bash
-$ python -m pretrain.simclr.feature_analysis -c breastmnist -fin simclr-demo
+$ python -m pretrain.simclr.feature_analysis -c dermamnist -fin simclr-demo
 $ python -m pretrain.simclr.feature_analysis -c dermamnist -fin pretrain-dermamnist -tsne
 ```
 
@@ -102,7 +102,7 @@ augmentations.
 ### Example
 
 ```bash
-$ python -m pretrain.simclr.data_preview -c pathmnist -aug novel
+$ python -m pretrain.simclr.data_preview -c dermamnist -aug novel
 ```
 
 ## TensorBoard
