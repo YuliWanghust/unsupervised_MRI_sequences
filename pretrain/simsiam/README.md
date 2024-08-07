@@ -1,4 +1,4 @@
-# SimCLR
+# SimSiam
 
 Make sure you are currently in the `root` folder.
 
