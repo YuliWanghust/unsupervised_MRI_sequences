@@ -1,4 +1,4 @@
-# ResNet
+# ResNet for simclr pre-trained model
 
 Make sure you are currently in the `root` folder.
 
