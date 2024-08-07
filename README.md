@@ -4,54 +4,6 @@ In this repository, we provide a comprehensive set of frameworks written in
 PyTorch Lightning to perform and evaluate self-supervised contrastive learning
 using SimCLR on MRI sequence classification.
 
-## Background
-
-A Simple Framework for Contrastive Learning of Visual Representations (SimCLR)
-is a state-of-the-art contrastive learning method that aims to learn useful
-representations of images through training a convolutional neural network (the
-codebase uses ResNet-18) to recognise similarities between a pair of augmented
-data points derived from the same input image. The idea is that the network may
-learn to extract useful, generalisable features that can be used for downstream
-tasks.
-
-Original SimCLR papers:
-- [A Simple Framework for Contrastive Learning of Visual Representations][simclr]
-```bibtex
-@inproceedings{chen2020simple,
-  title={A simple framework for contrastive learning of visual representations},
-  author={Chen, Ting and Kornblith, Simon and Norouzi, Mohammad and Hinton, Geoffrey},
-  booktitle={International conference on machine learning},
-  pages={1597--1607},
-  year={2020},
-  organization={PMLR}
-}
-```
-- [Big Self-Supervised Models are Strong Semi-Supervised Learners][simclrv2]
-```bibtex
-@article{chen2020big,
-  title={Big self-supervised models are strong semi-supervised learners},
-  author={Chen, Ting and Kornblith, Simon and Swersky, Kevin and Norouzi, Mohammad and Hinton, Geoffrey E},
-  journal={Advances in neural information processing systems},
-  volume={33},
-  pages={22243--22255},
-  year={2020}
-}
-```
-
-[simclr]: https://arxiv.org/pdf/2002.05709.pdf
-[simclrv2]: https://arxiv.org/pdf/2006.10029.pdf
-
-<!-- Contributions -->
-<!--
-## Contributions
-
-- how well does a SimCLR setup that works well for natural images transfer to medical images?
-- 4 augmentation sequences (list them out)
-- lack of data
-- unbalanced dataset
-- evaluation metrics & representations
--->
-
 ## Usage guide
 
 ### Installation
