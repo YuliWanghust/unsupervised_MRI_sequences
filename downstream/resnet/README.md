@@ -58,7 +58,7 @@ the purpose of creating baseline metrics.
 
 ```bash
 # Quick demo: takes 5 minutes to train
-$ python -m downstream.resnet.train -c breastmnist -epochs 12 -samples 20 -fin simclr-demo -fout simclr-demo
+$ python -m downstream.resnet.train -c dermamnist -epochs 12 -samples 20 -fin simclr-demo -fout simclr-demo
 # Takes 1 hour to train on GPU
 $ python -m downstream.resnet.train -c dermamnist -epochs 1000 -samples 100 -fin pretrain-dermamnist
 # Baseline: Supervised learning
@@ -92,7 +92,7 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 ### Example
 
 ```bash
-$ python -m downstream.resnet.test -c breastmnist -fin simclr-demo
+$ python -m downstream.resnet.test -c dermamnist -fin simclr-demo
 # A larger dataset can take 5-10 minutes
 $ python -m downstream.resnet.test -c dermamnist -fin downstream-dermamnist-100-samples
 ```
@@ -127,7 +127,7 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 ### Example
 
 ```bash
-$ python -m downstream.resnet.feature_analysis -c breastmnist -fin simclr-demo
+$ python -m downstream.resnet.feature_analysis -c dermamnist -fin simclr-demo
 $ python -m downstream.resnet.feature_analysis -c pathmnist -fin baseline-pathmnist-18 -tsne
 ```
 
