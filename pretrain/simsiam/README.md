@@ -47,9 +47,9 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 # Quick demo: takes 5 minutes to train
 $ python -m pretrain.simsiam.train -c dermamnist -epochs 3 -aug natural -samples 20 -fout simsiam-demo -bsize 64
 # Takes 1 day to train on GPU
-$ python -m pretrain.simsiam.train -c dermamnist -epochs 2000 -aug natural
+$ python -m pretrain.simsiam.train -c dermamnist -epochs 2000 -aug natural-bsize 64
 # Perform further pretraining on a pretrained model
-$ python -m pretrain.simsiam.train -c dermamnist -epochs 2000 -aug natural -fin pretrain-dermamnist
+$ python -m pretrain.simsiam.train -c dermamnist -epochs 2000 -aug natural -fin pretrain-dermamnist -bsize 64
 ```
 
 If training successful for the demo, the model can be found as
