@@ -1,4 +1,4 @@
-# ResNet
+# ResNet_simclr
 
 Make sure you are currently in the `root` folder.
 
