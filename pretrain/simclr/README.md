@@ -25,7 +25,7 @@ breastmnist, bloodmnist, tissuemnist, organamnist, organcmnist, organsmnist
 
 `aug`
 - Specifies which augmentation sequence to use. Accepted inputs: `natural`,
-  `novel`, `simple`, `greyscale`. Use [Data preview](#data-preview) environment
+  `novel`, `simple`, `greyscale` and `diskeep`. Use [Data preview](#data-preview) environment
   to see effect of augmentations.
 
 `samples`
