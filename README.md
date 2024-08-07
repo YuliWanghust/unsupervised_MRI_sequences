@@ -40,7 +40,7 @@ Navigate to one of the following pages below. Each environment has a
 comprehensive documentation with example usage.
 
 Pretrain:
-- Go to `pretrain/simclr` directory and see `README.md`.
+- Go to `pretrain/simclr` or `pretrain/simsiam` directory and see `README.md`.
 
 Finetune with frozen encoder:
 - Go to `downstream/logistic_regression` and see `README.md`.
