@@ -1,0 +1,18 @@
+# Virtual environment
+venv/
+
+# Cache
+__pycache__/
+
+# Data
+data/
+
+# Testing
+sandbox.py
+
+# Logs
+lightning_logs/
+logs.txt
+
+# Directory for miscellaneous output files
+out/
