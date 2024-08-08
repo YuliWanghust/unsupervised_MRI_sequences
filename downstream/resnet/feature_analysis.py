@@ -73,6 +73,7 @@ if __name__ == "__main__":
         network, test_data, device, sort=False)
     print("Preparing data features: Done!")
 
+    ## directly output the PCA or t-SNE latent space images
     # perform_feature_analysis(
     #     train_feats_data,
     #     test_feats_data,
@@ -83,6 +84,7 @@ if __name__ == "__main__":
     #     legend=LEGEND,
     # )
 
+    ## Interactive image of the latent space
     perform_feature_analysis_view(
         train_feats_data,
         test_feats_data,
